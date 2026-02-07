@@ -38,7 +38,7 @@ pipeline {
             steps {
                 withCredentials([
                     sshUserPrivateKey(
-                        credentialsId: 'devops',
+                        credentialsId: 'ansible-devops',
                         keyFileVariable: 'SSH_KEY'
                     )
                 ]) {
