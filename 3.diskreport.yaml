@@ -1,0 +1,15 @@
+- name: create disk report
+  hosts: allservers
+  tasks:
+    - name: create report 
+      #command: df -h > /tmp/dr.txt
+      shell: "df -h >/tmp/dr.txt"
+    - name: get content /tmp/dr.txt
+      command: cat /tmp/dr.txt
+      register: commandoutputregister
+    - name: print the output of previous task
+      ansible.builtin.debug:
+        #var: commandoutput
+        msg:
+          - "the command took {{ commandoutputregister.delta }}"
+          - "{{ commandoutputregister.stdout_lines }}"
